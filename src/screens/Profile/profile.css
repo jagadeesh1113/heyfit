@@ -1,0 +1,10 @@
+.profile-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .profile-container {
+    width: 450px;
+  }
+}
