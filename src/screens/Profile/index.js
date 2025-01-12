@@ -14,7 +14,6 @@ function Profile() {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           setUserDetails(docSnap.data());
-          console.log(docSnap.data());
         } else {
           console.log("User is not logged in");
         }
@@ -29,7 +28,6 @@ function Profile() {
     try {
       await firebaseAuth.signOut();
       window.location.href = "/login";
-      console.log("User logged out successfully!");
     } catch (error) {
       console.error("Error logging out:", error.message);
     }

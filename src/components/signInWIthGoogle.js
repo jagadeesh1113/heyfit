@@ -2,12 +2,17 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { firebaseAuth, firestoreDb } from "../firebase";
 import { toast } from "react-toastify";
 import { setDoc, doc } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setUser } from "../store/userSlice";
 
 function SignInwithGoogle() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   function googleLogin() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(firebaseAuth, provider).then(async (result) => {
-      console.log(result);
       const user = result.user;
       if (result.user) {
         await setDoc(doc(firestoreDb, "Users", user.uid), {
@@ -17,9 +22,10 @@ function SignInwithGoogle() {
           lastName: "",
         });
         toast.success("User logged in Successfully", {
-          position: "top-center",
+          position: "bottom-left",
         });
-        window.location.href = "/profile";
+        dispatch(setUser(user));
+        navigate("/");
       }
     });
   }

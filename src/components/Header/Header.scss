@@ -1,0 +1,169 @@
+@import "../../styles/base/all";
+
+.app__header {
+  display: flex;
+  position: fixed;
+  background: #fff;
+  width: 100%;
+  z-index: 2;
+  @include surface("2", null);
+  height: 58px !important;
+  &--item {
+    padding: $space--md 0;
+  }
+  .short__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $space--xs;
+    background-color: $light-border;
+
+    .brand__logo {
+      width: 40px;
+    }
+
+    .brand-logo-container {
+      margin: 0 !important;
+    }
+  }
+  .header__wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: $space--sm $base--unit;
+    .fa {
+      vertical-align: -webkit-baseline-middle;
+    }
+    .refresh__block {
+      margin-right: $space--md;
+      text-decoration: underline;
+      cursor: pointer;
+      .refresh__icon {
+        margin-right: $space--2xs;
+
+        &:hover .refresh {
+          color: $brand--secondary;
+          animation: spin 4s infinite linear;
+        }
+      }
+    }
+
+    .cart-container {
+      margin-right: $space--sm;
+
+      .cart-icon {
+        font-size: 28px;
+      }
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg) scale(1.2);
+      }
+      to {
+        transform: rotate(360deg) scale(1.2);
+      }
+    }
+
+    .header--item {
+      cursor: pointer;
+      margin-bottom: 0 !important;
+    }
+    .app--profile {
+      height: 32px;
+      width: 32px;
+      .profile_logo {
+        height: 100%;
+        border-radius: 16px;
+      }
+    }
+    .logo__wrapper {
+      width: 75%;
+      margin-right: auto;
+      font-weight: 500;
+      color: $brand--secondary;
+      .brand_logo {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.logout-popup {
+  .ant-popover-inner-content {
+    padding: 0 !important;
+  }
+}
+
+.profile__card {
+  padding-left: 0;
+  &--item {
+    padding: $space--sm $space--md;
+    display: flex;
+    flex-direction: column;
+    &:not(:last-child) {
+      border-bottom: 1px solid $light-border;
+    }
+
+    .profile-name {
+      font-weight: 500;
+    }
+  }
+
+  .clickable {
+    cursor: pointer;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  .header__wrapper {
+    .logo__wrapper {
+      font-size: $space--md !important;
+    }
+  }
+}
+
+.ant-drawer-header {
+  background-color: $brand--secondary !important;
+
+  .ant-drawer-title {
+    color: $white--high !important;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.ant-drawer-body {
+  background-color: $brand--secondary !important;
+  color: $color--white;
+  font-size: 16px;
+
+  .sub-menu-item {
+    cursor: pointer;
+    margin-bottom: $space--sm;
+    padding: $space--2xs $space--sm;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .highlight-menu-item {
+    background-color: $grey-label;
+  }
+}
+
+.ant-drawer-title {
+  #task-type-filter {
+    width: 100% !important;
+
+    .filter__list {
+      width: 100% !important;
+    }
+  }
+}

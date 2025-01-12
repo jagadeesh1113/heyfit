@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setUser } from "./store/userSlice";
 import Login from "./screens/Login";
-import Profile from "./screens/Profile";
+import ProtectedRoutes from "./ProtectedRoutes";
 import { firebaseAuth } from "./firebase";
 
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -10,23 +12,19 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 function App() {
-  const [user, setUser] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     firebaseAuth.onAuthStateChanged((user) => {
-      setUser(user);
+      dispatch(setUser(user));
     });
   });
   return (
     <div className="App">
       <div>
         <Routes>
-          <Route
-            path="/"
-            element={user ? <Navigate to="/profile" /> : <Login />}
-          />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/" element={<ProtectedRoutes />} />
         </Routes>
         <ToastContainer />
       </div>

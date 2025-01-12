@@ -1,0 +1,16 @@
+.access-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+  & > img {
+    width: 500px;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .access-container > img {
+    width: 100%;
+  }
+}
