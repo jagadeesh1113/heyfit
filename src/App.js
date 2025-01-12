@@ -24,7 +24,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<ProtectedRoutes />} />
+          <Route path="*" element={<ProtectedRoutes />} />
         </Routes>
         <ToastContainer />
       </div>

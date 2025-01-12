@@ -11,8 +11,8 @@ const ProtectedRoutes = () => {
       <article className="app__content">
         <main>
           <Routes>
-            <Route path="/profile" element={<Profile />} />
-            <Route path={"/permission-denied"} component={PermissionDenied} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="permission-denied" element={<PermissionDenied />} />
           </Routes>
         </main>
       </article>
